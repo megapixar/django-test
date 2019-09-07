@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'teams',
 ]
 
 MIDDLEWARE = [
@@ -47,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'team.urls'
+ROOT_URLCONF = 'teams.urls'
 
 TEMPLATES = [
     {
