@@ -1,13 +1,10 @@
-from rest_framework.views import APIView
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from .serializers import MemberHappinessSerializer
+from .. import models
 
 
-class HappinessApi(APIView):
-    """
-    List statistic, or create a new happiness entity.
-    """
-
-    def get(self, request, format=None):
-        pass
-
-    def post(self, request, format=None):
-        pass
+class MemberHappiness(generics.ListCreateAPIView):
+    queryset = models.MemberHappiness.objects.all()
+    serializer_class = MemberHappinessSerializer
+    permission_classes = [IsAuthenticated]

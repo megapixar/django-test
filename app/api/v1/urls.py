@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.urls import path
 
-from api.v1 import views
+from rest_framework.authtoken.views import obtain_auth_token
+from . import views
 
 app_name = 'v1'
 
 urlpatterns = [
-    path('happiness', views.HappinessApi.as_view()),
+    path('<team>/happiness', views.MemberHappiness.as_view()),
+    path('login', obtain_auth_token),
 ]
