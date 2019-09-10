@@ -3,13 +3,14 @@ All required libraries are in `requirements.txt`
 ### INSTALLATION
 
 1. clone repo from `git clone -b feature/team-app https://github.com/megapixar/django-test`
-2. make sure that you are in `django-test` directory and run `python3.7 -m venv venv`
-3. `source venv/bin/activate`
-4. `pip install -r requirements.txt`
+2. `cd django-test`
+3. `python3.7 -m venv venv`
+4. `source venv/bin/activate`
+5. `pip install -r requirements.txt`
 6. `cd app`
-5. `python manage.py migrate`
-6. `echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', 'admin')" | python manage.py shell`
-7. `python manage.py runserver`
+7. `python manage.py migrate`
+8. `echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', 'admin')" | python manage.py shell`
+9. `python manage.py runserver`
 
 To run test `python ./manage.py test` from `django-test/app` directory
 
