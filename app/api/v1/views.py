@@ -5,7 +5,6 @@ from rest_framework.response import Response
 
 from api import models
 from api.v1.serializers import MemberHappinessSerializer
-
 from api.queries import get_happiness_stat
 
 
@@ -18,7 +17,8 @@ class MemberHappiness(generics.ListCreateAPIView):
         return models.MemberHappiness.objects.filter(member__team__slug=slug). \
             all()
 
-    def get_response(self, slug):
+    @staticmethod
+    def get_response(slug):
         return Response({'data': get_happiness_stat(slug)}, 200)
 
     def get(self, request, *args, **kwargs):
