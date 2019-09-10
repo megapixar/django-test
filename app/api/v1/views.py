@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -32,3 +33,12 @@ class MemberHappiness(generics.ListCreateAPIView):
         self.create(request, *args, **kwargs)
 
         return self.get_response(slug)
+
+
+class Login(ObtainAuthToken):
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        response.data = {'data': response.data}
+
+        return response
