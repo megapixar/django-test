@@ -1,7 +1,7 @@
 from django.test import SimpleTestCase
 from rest_framework import exceptions
 
-from ..utils import custom_exception_handler
+from api.utils import custom_exception_handler
 
 
 class CustomExceptionHandlerTest(SimpleTestCase):

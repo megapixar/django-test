@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from .models import Team, TeamMember
+from api import models
 
 
-@admin.register(Team)
+@admin.register(models.Team)
 class HeroAdmin(admin.ModelAdmin):
     readonly_fields = ["slug"]
 
 
-admin.site.register(TeamMember)
+admin.site.register(models.TeamMember)

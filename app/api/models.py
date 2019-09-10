@@ -24,6 +24,17 @@ class TeamMember(models.Model):
     def __str__(self):
         return self.user.username
 
+    @property
+    def team_slug(self):
+        return self.team.slug
+
+    @property
+    def last_happiness(self):
+        if self.happiness.count() == 0:
+            return None
+
+        return self.happiness.latest('created_at')
+
 
 class MemberHappiness(models.Model):
     UNHAPPY = 1
@@ -35,6 +46,6 @@ class MemberHappiness(models.Model):
         (HAPPY, 'Very Happy'),
     ]
     member = models.ForeignKey(TeamMember, on_delete=models.CASCADE,
-                               related_name='happiness', )
+                               related_name='happiness')
     happiness = models.IntegerField(choices=HAPPINESS_LEVEL)
     created_at = models.DateTimeField(auto_now_add=True)

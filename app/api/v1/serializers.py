@@ -1,7 +1,7 @@
 from django.utils import timezone
 from django.utils.datetime_safe import datetime
 from rest_framework import serializers
-from ..models import MemberHappiness
+from api import models
 
 
 class MemberHappinessSerializer(serializers.ModelSerializer):
@@ -10,16 +10,16 @@ class MemberHappinessSerializer(serializers.ModelSerializer):
         """
         Check that start is before finish.
         """
-        user = self.context['request'].user
-        can_add = False
-        if user.team_member.happiness.count() > 0:
-            latest_happiness = user.team_member.happiness.latest('created_at')
-            can_add = datetime.now(timezone.utc).date() != \
-                      latest_happiness.created_at.date()
+        team_member = self.context['request'].user.team_member
+        if team_member.last_happiness:
+            can_add = datetime.now(timezone.utc).date() != team_member. \
+                last_happiness.created_at.date()
+        else:
+            can_add = True
 
         if not can_add:
             raise serializers.ValidationError(
-                "You can update happiness once a day")
+                "You can update happiness only once per day")
         return data
 
     def create(self, validated_data):
@@ -27,5 +27,5 @@ class MemberHappinessSerializer(serializers.ModelSerializer):
         return member.happiness.create(**validated_data)
 
     class Meta:
-        model = MemberHappiness
+        model = models.MemberHappiness
         fields = ['happiness']
