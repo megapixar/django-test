@@ -11,6 +11,8 @@ To run project please follow the instructions:
 6. `echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', 'admin')" | python manage.py shell`
 7. `python manage.py runserver`
 
+To run test `python ./manage.py test` from `django-test/app` directory
+
 By default is used dev config from `teams.settings.dev`
 
 I implemented 3 endpoints:

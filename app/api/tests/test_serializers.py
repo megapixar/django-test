@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.utils.datetime_safe import datetime
 from rest_framework import serializers
 
-from app.api.v1.serializers import MemberHappinessSerializer
+from api.v1.serializers import MemberHappinessSerializer
 
 
 class MemberHappinessSerializerTest(TestCase):
