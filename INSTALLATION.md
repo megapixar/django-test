@@ -1,6 +1,6 @@
 All required libraries are in `requirements.txt`
 
-To run project please follow the instructions:
+### INSTALLATION
 
 1. clone repo from `git clone -b feature/team-app https://github.com/megapixar/django-test`
 2. make sure that you are in `django-test` directory and run `python3.7 -m venv venv`
@@ -15,7 +15,7 @@ To run test `python ./manage.py test` from `django-test/app` directory
 
 By default is used dev config from `teams.settings.dev`
 
-I implemented 3 endpoints:
+### Endpoints
 
 1. Login
 
