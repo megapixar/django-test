@@ -1,3 +1,8 @@
+###External packages
+
+1. Django
+2. Django REST framework
+
 All required libraries are in `requirements.txt`
 
 ### INSTALLATION
